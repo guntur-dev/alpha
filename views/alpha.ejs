@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin List</title>
+</head>
+
+<body>
+
+
+
+  <h2>Admin List</h2>
+
+
+  <form action="/deladmin" method="POST">
+
+    <ul>
+
+      <% alpha.forEach( g => {%>
+
+      <li><%=g.username%></li>
+
+      <%})%>
+
+    </ul>
+
+    <input type="text" name='admindel' placeholder="Admin Name to be Erased"><br>
+    <input type="submit" value="Delete" id="erase">
+
+
+
+
+  </form>
+
+
+
+  <h2>Add Admin</h2>
+  <script>
+    function check_pass() {
+      if (document.getElementById('password').value ==
+        document.getElementById('confirm_password').value) {
+        document.getElementById('submit').disabled = false;
+      } else {
+        document.getElementById('submit').disabled = true;
+        console.log('password mismatch!')
+      }
+    }
+  </script>
+
+  <form action="/addadmin" method="POST">
+    <input type="text" name='username' placeholder="username"><br>
+    <input type="password" id='password' name='password' placeholder="password" onchange='check_pass();'><br>
+    <input type="password" id='confirm_password' placeholder="confirm password" onchange='check_pass();'><br>
+    <input type="submit" name="submit" value="Add New Admin" id="submit" disabled>
+
+
+  </form>
+  <br>
+  <br>
+
+</body>
+
+</html>
